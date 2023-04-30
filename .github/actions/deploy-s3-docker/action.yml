@@ -21,4 +21,4 @@ runs:
   # Dockerアクションを使う際は、 「using: 'docker'」と記載する。
   using: 'docker'
   # imageは、Dokerfileまでのパスを示すか、パブリックリポジトリのimageを指定する。
-  image: ./'Dockerfile'
+  image: './Dockerfile'
