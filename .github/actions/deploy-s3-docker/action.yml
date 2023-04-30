@@ -1,0 +1,24 @@
+name: 'Deploy to AWS S3'
+description: 'Deploy a static website via AWS S3.'
+inputs:
+  # inputsを定義すると、github actionsが自動で、INPUT_XXXXという環境変数を作ってくれる。
+  # Dockerコンテナ上でinputを受け取るには、環境変数「INPUT_XXXX」にアクセスすることで入力を受け取ることができる。
+  ## ※ INPUT_XXXXはすべて大文字。
+  bucket:
+    description: 'The S3 bucket name.'
+    required: true
+  bucket-region: 
+    description: 'The region of the S3 bucket.'
+    required: false
+    default: 'us-east-1'
+  dist-folder:
+    description: 'The folder containing the deployable files.'
+    required: true
+outputs:
+  website-url:
+    description: 'The URL of the deployed website.'
+runs:
+  # Dockerアクションを使う際は、 「using: 'docker'」と記載する。
+  using: 'docker'
+  # imageは、Dokerfileまでのパスを示すか、パブリックリポジトリのimageを指定する。
+  image: ./'Dockerfile'
